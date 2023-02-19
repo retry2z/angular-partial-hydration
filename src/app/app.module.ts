@@ -1,18 +1,26 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { APP_INITIALIZER, NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { RouterModule } from "@angular/router";
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { HydrationService } from "./hydration.service";
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
-    BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
   ],
-  providers: [],
+  exports: [
+    RouterModule,
+  ],
+  providers: [{
+    provide: APP_INITIALIZER,
+    useFactory: (hydrate: HydrationService) => hydrate.initializeApp,
+    multi: true,
+    deps: [HydrationService]
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

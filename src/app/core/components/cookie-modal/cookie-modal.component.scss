@@ -1,0 +1,16 @@
+:host {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  border-radius: 2rem 2rem 0 0;
+  background-color: var(--dark-paper-color);
+  color: var(--text-color-000);
+  padding: 1rem 5vw;
+  z-index: 2;
+
+  &[data-open="false"] {
+    display: none;
+  }
+}

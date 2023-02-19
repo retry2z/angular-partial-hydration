@@ -18,14 +18,18 @@ const routes: Routes = [
       // ==========================
       // PAGES
       // ==========================
-      // {
-      //   path: '**',
-      //   loadChildren: () => import('@pages/page-builder/page.module').then(m => m.PageModule),
-      // },
-      // {
-      //   path: '',
-      //   loadChildren: () => import('@pages/page-builder/page.module').then(m => m.PageModule),
-      // },
+      {
+        path: 'page-1',
+        loadComponent: () => import('@pages/page-1/page-1.component').then(m => m.PageOneComponent),
+      },
+      {
+        path: 'page-2',
+        loadComponent: () => import('@pages/page-2/page-2.component').then(m => m.PageTwoComponent),
+      },
+      {
+        path: '**',
+        loadComponent: () => import('@pages/page-1/page-1.component').then(m => m.PageOneComponent),
+      },
     ]
   }
 ];

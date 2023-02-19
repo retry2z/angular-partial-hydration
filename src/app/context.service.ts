@@ -16,10 +16,9 @@ export interface ContextState {
 export class ContextService {
   private stateKey = makeStateKey<Object>('context');
   public readonly stateChanges$: BehaviorSubject<ContextState> = new BehaviorSubject<any>({
-    ...this.transferState.get(this.stateKey, {
-      isServer: (typeof window === 'undefined'),
-      isBrowser: (typeof window === 'undefined'),
-    }),
+    ...this.transferState.get(this.stateKey, {}),
+    isBrowser: isPlatformBrowser(this.platformId),
+    isServer: isPlatformServer(this.platformId),
   });
 
   constructor(
@@ -29,22 +28,23 @@ export class ContextService {
   ) {
     // SETTING INITIAL STATE ON SERVER
     if (isPlatformServer(this.platformId)) {
-      const initState: Partial<ContextState> = {
-        isCookieModalOpen: false,
-      }
-      this.transferState.set(this.stateKey, initState);
-    }
-
-    // SETTING INITIAL STATE ON BROWSER
-    if (isPlatformBrowser(this.platformId)) {
       this.setState({
         isCookieModalOpen: false,
       });
     }
 
+    // SETTING INITIAL STATE ON BROWSER
+    if (isPlatformBrowser(this.platformId)) {
+      this.setState({
+        isCookieModalOpen: true,
+      });
+    }
+
     // HYDRATING COOKIE MODAL
     if (this.state.isCookieModalOpen) {
-      this.emitter.emit('hydration', '@components/cookie-modal/cookie-modal.component>>CookieModalComponent>>default>>app-cookie-modal',
+      this.emitter.emit(
+        'hydration',
+        '@components/cookie-modal/cookie-modal.component>>CookieModalComponent>>default>>app-cookie-modal'
       )
     }
   }

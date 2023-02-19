@@ -17,10 +17,13 @@ export class CookieModalComponent {
 
   constructor(public context: ContextService) { }
 
+  ngOnInit(): void {
+    console.log('CookieModalComponent Init');
+  }
+
   public handleAcceptClick(): void {
     this.context.setState({
       isCookieModalOpen: false
     });
   }
-
 }

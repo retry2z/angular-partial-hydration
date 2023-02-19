@@ -7,6 +7,7 @@ import { AsyncSubject, Observable, takeUntil } from "rxjs";
 
 const RESOLVER_DICTIONARY: { [key: string]: Function } = {
   "@components/cookie-modal/cookie-modal.component": () => import('@components/cookie-modal/cookie-modal.component'),
+  "@components/counter/counter.component": () => import('@components/counter/counter.component')
 }
 
 @Injectable({
@@ -95,7 +96,7 @@ export class HydrationService {
           observer.disconnect()
         }
       })
-    }, { root: null, threshold: 0.3, rootMargin: '200px' })
+    }, { root: null, threshold: 0.3, rootMargin: '20px' })
     observer.observe(elRef);
   }
   private hydrateByDefault(elRef: Element, eventName: string, component: Type<unknown>): void {
@@ -104,7 +105,6 @@ export class HydrationService {
 
   //Hydration Utilities
   public initializeApp = (): Observable<boolean> | boolean => {
-    console.log(this.context.state.isServer);
     if (this.context.state.isServer) return true
     return this.bootstrap$;
   }

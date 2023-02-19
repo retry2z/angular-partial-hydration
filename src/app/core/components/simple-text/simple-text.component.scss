@@ -1,0 +1,7 @@
+:host {
+  min-height: 120vh;
+  background-color: rgba(0, 0, 255, 0.4);
+  display: grid;
+  grid-template-columns: minmax(10px, 1fr);
+  place-content: center;
+}

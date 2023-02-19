@@ -7,4 +7,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: []
 })
-export class ShellEmptyComponent { }
+export class ShellEmptyComponent {
+
+  constructor() { }
+
+  ngOnInit(): void {
+    console.log('ShellEmptyComponent Init');
+  }
+ }

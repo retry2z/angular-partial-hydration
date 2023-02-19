@@ -5,4 +5,11 @@ import { ChangeDetectionStrategy, Component } from "@angular/core";
   template: `<router-outlet></router-outlet>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent { }
+export class AppComponent {
+
+  constructor() { }
+
+  ngOnInit(): void {
+    console.log('AppComponent Init');
+  }
+ }

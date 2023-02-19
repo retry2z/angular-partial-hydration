@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CounterComponent } from '@components/counter/counter.component';
+import { HeadingComponent } from '@components/heading/heading.component';
 import { SimpleTextComponent } from '@components/simple-text/simple-text.component';
 
 @Component({
@@ -7,7 +8,7 @@ import { SimpleTextComponent } from '@components/simple-text/simple-text.compone
   templateUrl: './page-1.component.html',
   styleUrls: ['./page-1.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CounterComponent, SimpleTextComponent],
+  imports: [CounterComponent, SimpleTextComponent, HeadingComponent],
   standalone: true,
 })
 export class PageOneComponent {

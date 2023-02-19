@@ -27,7 +27,7 @@ const routes: Routes = [
         loadComponent: () => import('@pages/page-2/page-2.component').then(m => m.PageTwoComponent),
       },
       {
-        path: '**',
+        path: '',
         loadComponent: () => import('@pages/page-1/page-1.component').then(m => m.PageOneComponent),
       },
     ]

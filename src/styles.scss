@@ -12,13 +12,17 @@ html {
 }
 
 body {
-  font-size: 1.5rem;
-  line-height: 1.5em;
+  font-size: 1.25rem;
+  line-height: 2em;
   text-rendering: optimizeSpeed;
   color: white;
 
   a {
     text-decoration: none;
     color: black;
+  }
+
+  button {
+    padding: 0.25em 2ch;
   }
 }
